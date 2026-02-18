@@ -40,7 +40,7 @@ export default function GreenhouseDashboard() {
           <h1 className="md:text-2xl font-bold tracking-tight text-xl">Oloolaiser IOT greenhouse</h1>
           <p className="text-muted-foreground text-sm">Real-time greenhouse monitoring active</p>
         </div>
-        <Badge variant={uiUnlocked ? "destructive" : ""} className="px-4 py-1 bg-gray-600">
+        <Badge variant={uiUnlocked ? "destructive" : "default"} className="px-4 py-1 bg-gray-600">
           {uiUnlocked ? "MANUAL OVERRIDE" : "AI AUTONOMOUS"}
         </Badge>
       </div>
@@ -65,7 +65,7 @@ export default function GreenhouseDashboard() {
       label="Operation Mode" 
       sub="Toggle to Manual to unlock buttons" 
       checked={localManual} 
-      onToggle={(v) =>{
+      onToggle={(v:any) =>{
         setLocalManual(v);
         publish('mode', v ? 'manual' : 'auto')
     
@@ -78,20 +78,20 @@ export default function GreenhouseDashboard() {
         sub="Fan Control" 
         checked={data.fan} 
         disabled={!uiUnlocked} // <--- Pass it here too
-        onToggle={(v) => publish('fan', v ? 'ON' : 'OFF')} 
+        onToggle={(v:any) => publish('fan', v ? 'ON' : 'OFF')} 
       />
       <ControlRow 
         label="Water Pump" 
         sub="Irrigation" 
         checked={data.pump} 
-        onToggle={(v) => publish('pump', v ? 'ON' : 'OFF')} 
+        onToggle={(v:any) => publish('pump', v ? 'ON' : 'OFF')} 
       />
       {/* Added Heater Here */}
       <ControlRow 
         label="Heater" 
         sub="Temperature Boost" 
         checked={data.heat} 
-        onToggle={(v) => publish('heat', v ? 'ON' : 'OFF')} 
+        onToggle={(v:any) => publish('heat', v ? 'ON' : 'OFF')} 
       />
     </div>
   </CardContent>
